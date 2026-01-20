@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <section class="author-section">
+        <div class="author-card">
+            <div class="author-image">
+                <img src="{% static 'images/author.jpg' %}" alt="Фото автора" width="150" height="150">
+            </div>
+            <div class="author-info">
+                <h1 class="author-name">Иван Петров</h1>
+                <p class="author-title">Разработчик и блогер</p>
+                <p class="author-bio">
+                    Привет! Я разработчик с 5-летним опытом. В этом блоге делюсь своими мыслями,
+                    опытом и полезными советами о программировании, веб-разработке и технологиях.
+                    Люблю создавать простые и эффективные решения.
+                </p>
+                <div class="author-stats">
+                    <div class="stat">
+                        <span class="stat-number">42</span>
+                        <span class="stat-label">поста</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">года</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">1.5K</span>
+                        <span class="stat-label">читателей</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="blog-posts">
+        <h2 class="section-title">Все записи</h2>
+        <div class="posts-container">
+            <article class="blog-post-card">
+                <div class="post-category">
+                    <span class="category-badge">Программирование</span>
+                </div>
+                <div class="post-image">
+                    <div class="image-placeholder">Изображение поста</div>
+                </div>
+                <div class="post-content">
+                    <div class="post-meta">
+                        <time datetime="2023-03-15">15 марта 2023</time>
+                        <span class="read-time">5 мин чтения</span>
+                    </div>
+                    <h2 class="post-title">Как начать работать с приложением</h2>
+                    <p class="post-excerpt">
+                        Пошаговое руководство для новичков, которое поможет быстро освоить основные функции приложения...
+                    </p>
+                    <div class="post-footer">
+                        <a href="{% url 'post' %}" class="read-more-btn">Читать далее →</a>
+                        <div class="post-stats">
+                            <span class="likes">❤️ 24</span>
+                            <span class="comments">💬 8</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>
+{% endblock %}

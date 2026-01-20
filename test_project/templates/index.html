@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/main_page.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+        <div class="container">
+            <h1>Добро пожаловать в мое приложение</h1>
+            <a href="blog" class="btn">Перейти к блогу</a>
+        </div>
+    </section>
+
+<section class="recent-posts">
+        <div class="container">
+            <h2 class="section-title">Последние записи в блоге</h2>
+            <div class="posts-grid">
+                <div class="post-card">
+                    <div class="post-image">Изображение поста 1</div>
+                    <div class="post-content">
+                        <h3>Как начать работать с приложением</h3>
+                        <div class="post-meta">15 марта 2023 • 5 мин чтения</div>
+                        <p>Пошаговое руководство для новичков, которое поможет быстро освоить основные функции приложения.</p>
+                        <a href="{% url 'post' %}" class="read-more">Читать далее →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

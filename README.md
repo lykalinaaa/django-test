@@ -6,8 +6,6 @@
 
 `pip install -r requirements.txt`
 
-3. Перейти в папку test_poject
+3. Выполнить команду
 
-4. Выполнить команду
-
-`python .\manage.py runserver`
+`python test_project\manage.py runserver`
