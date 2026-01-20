@@ -24,7 +24,8 @@ def blog_page(request):
 # Пост
 def post_page(request, post_id):
     post = get_object_or_404(Post, id=post_id)
-    data = {"menu": menu, "posts": post, "comments": "/comments/"}
+    comments_count = Comment.objects.filter(post_id=post_id, checked=True).count()
+    data = {"menu": menu, "posts": post, "comments": "/comments/", "comments_count": comments_count}
 
     return render(request, "post.html", context=data)
 
@@ -42,7 +43,7 @@ def comments_page(request, post_id):
             Comment.objects.create(fio=fio, email=email, text=text, post_id=post_id, created_at=formatted)
             return redirect('comments', post_id=post_id)
 
-    comments = Comment.objects.filter(post_id=post_id)
+    comments = Comment.objects.filter(post_id=post_id, checked=True)
 
     data = {
         "menu": menu,
