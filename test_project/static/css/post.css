@@ -43,9 +43,10 @@
     margin-bottom: 3rem;
 }
 
-.post-header {
+.post-header{
     padding: 2.5rem 2.5rem 1.5rem;
     border-bottom: 1px solid #eee;
+    background-color: white;
 }
 
 .post-category {

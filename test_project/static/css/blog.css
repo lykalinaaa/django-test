@@ -115,6 +115,7 @@
 
 .post-image {
     height: 200px;
+    overflow: hidden;
     background: linear-gradient(135deg, #3498db, #2c3e50);
     display: flex;
     align-items: center;

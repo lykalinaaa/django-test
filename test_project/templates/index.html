@@ -6,26 +6,96 @@
 {% endblock %}
 
 {% block content %}
-<section class="hero">
+    <section class="hero">
         <div class="container">
             <h1>Добро пожаловать в мое приложение</h1>
-            <a href="blog" class="btn">Перейти к блогу</a>
+            <p class="hero-subtitle">Место, где технологии встречаются с практикой</p>
+            <a href="{% url 'blog' %}" class="btn">Перейти к блогу</a>
         </div>
     </section>
 
-<section class="recent-posts">
+    <section class="about-author">
         <div class="container">
-            <h2 class="section-title">Последние записи в блоге</h2>
-            <div class="posts-grid">
-                <div class="post-card">
-                    <div class="post-image">Изображение поста 1</div>
-                    <div class="post-content">
-                        <h3>Как начать работать с приложением</h3>
-                        <div class="post-meta">15 марта 2023 • 5 мин чтения</div>
-                        <p>Пошаговое руководство для новичков, которое поможет быстро освоить основные функции приложения.</p>
-                        <a href="{% url 'post' %}" class="read-more">Читать далее →</a>
+            <div class="author-intro">
+                <div class="author-photo">
+                    <img src="{% static 'images/author.jpg' %}" alt="Фото автора" width="200" height="200">
+                </div>
+                <div class="author-content">
+                    <h2 class="section-title">Привет, я Иван Петров</h2>
+                    <p class="author-description">
+                        Разработчик с 5-летним опытом, который ведет этот блог чтобы делиться знаниями
+                        и помогать другим программистам расти профессионально.
+                    </p>
+
+                    <div class="author-expertise">
+                        <h3>Моя экспертиза:</h3>
+                        <ul class="expertise-list">
+                            <li>Веб-разработка (Django, Flask, FastAPI)</li>
+                            <li>Фронтенд (React, Vue.js, современный JavaScript)</li>
+                            <li>Базы данных (PostgreSQL, MySQL, Redis)</li>
+                            <li>DevOps и облачные технологии</li>
+                            <li>Архитектура программного обеспечения</li>
+                        </ul>
                     </div>
                 </div>
+            </div>
+
+            <div class="blog-topics">
+                <h2 class="section-title">О чем я пишу в блоге</h2>
+                <div class="topics-grid">
+                    <div class="topic-card">
+                        <div class="topic-icon">💻</div>
+                        <h3>Программирование</h3>
+                        <p>Практические руководства, туториалы и разборы сложных тем в разработке ПО.</p>
+                    </div>
+
+                    <div class="topic-card">
+                        <div class="topic-icon">🚀</div>
+                        <h3>Производительность</h3>
+                        <p>Советы по оптимизации кода, инструменты и практики для эффективной работы.</p>
+                    </div>
+
+                    <div class="topic-card">
+                        <div class="topic-icon">🔧</div>
+                        <h3>Инструменты</h3>
+                        <p>Обзоры полезных библиотек, фреймворков и утилит для разработчиков.</p>
+                    </div>
+
+                    <div class="topic-card">
+                        <div class="topic-icon">🎯</div>
+                        <h3>Карьера</h3>
+                        <p>Развитие в IT, собеседования, soft skills и профессиональный рост.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-stats">
+                <div class="stat-item">
+                    <span class="stat-number">{{ posts_count|default:"42" }}</span>
+                    <span class="stat-label">Постов</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Года работы</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">{{ readers_count|default:"1.5K" }}</span>
+                    <span class="stat-label">Читателей</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">{{ comments_count|default:"200+" }}</span>
+                    <span class="stat-label">Комментариев</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Готовы начать чтение?</h2>
+            <p>Присоединяйтесь к сообществу разработчиков, которые уже улучшают свои навыки с помощью этого блога.</p>
+            <div class="cta-buttons">
+                <a href="{% url 'blog' %}" class="btn btn-primary">Читать блог</a>
             </div>
         </div>
     </section>
