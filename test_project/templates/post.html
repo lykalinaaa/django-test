@@ -46,9 +46,7 @@
 
         <footer class="post-footer">
             <div class="action-buttons">
-                <button class="action-btn like-btn">
-                    <span class="btn-text">Отзывы</span>
-                </button>
+                <a href="{% url 'comments' posts.id %}" class="action-btn like-btn">Отзывы</a>
             </div>
             <div class="back-bottom">
                 <a href="/blog/" class="back-button secondary">

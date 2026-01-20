@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/comments.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="comments-header">
+        <h1 class="page-title">Отзывы и комментарии</h1>
+        <p class="page-subtitle">Что думают читатели о нашем блоге</p>
+
+        <div class="add-comment-btn">
+            <a href="#add-comment" class="btn">Добавить отзыв</a>
+        </div>
+    </div>
+
+    <section class="comments-section">
+        <h2 class="section-title">Последние отзывы</h2>
+
+        {% if comments %}
+        <div class="comments-list">
+            {% for comment in comments %}
+            <article class="comment-card">
+                <div class="comment-header">
+                    <div class="comment-author">
+                        <div class="author-avatar">
+                            {% if comment.author.profile.avatar %}
+                                <img src="{{ comment.author.profile.avatar.url }}">
+                            {% endif %}
+                        </div>
+                        <div class="author-info">
+                            <h3 class="author-name">
+                                {% if comment.fio %}
+                                    {{ comment.fio }}
+                                {% endif %}
+                            </h3>
+                            <span class="comment-date">{{ comment.created_at }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment-body">
+                    <p class="comment-text">{{ comment.text }}</p>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-comments">
+            <div class="no-comments-icon">💬</div>
+            <h3>Пока нет отзывов</h3>
+            <p>Будьте первым, кто оставит комментарий!</p>
+            <a href="#add-comment" class="btn btn-primary">Написать отзыв</a>
+        </div>
+        {% endif %}
+    </section>
+
+    <section id="add-comment" class="add-comment-section">
+        <h2 class="section-title">Оставить отзыв</h2>
+
+        <form class="comment-form" method="POST" action="{% url 'comments' post_id %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="fio" class="form-label">Ваше имя</label>
+                <input type="text" id="fio" name="fio" class="form-input" placeholder="Как к вам обращаться?" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-input" placeholder="для обратной связи" required>
+            </div>
+
+            <div class="form-group">
+                <label for="comment-text" class="form-label">Ваш отзыв</label>
+                <textarea id="comment-text" name="text" class="form-textarea" rows="5"
+                          placeholder="Поделитесь своими мыслями, предложениями или вопросами..." required></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-submit">Отправить отзыв</button>
+                <button type="reset" class="btn btn-secondary">Очистить</button>
+            </div>
+        </form>
+    </section>
+</div>
+{% endblock %}

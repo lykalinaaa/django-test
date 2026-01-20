@@ -11,3 +11,12 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.title} \n {self.text}'
+
+
+class Comment(models.Model):
+    post_id = models.CharField(blank=False, default="")
+    fio = models.CharField(blank=False, default="")
+    email = models.EmailField(blank=False, default="")
+    text = models.CharField(blank=False, default="")
+    created_at = models.CharField(default="Нет данных")
+    checked = models.BooleanField(default=False)
